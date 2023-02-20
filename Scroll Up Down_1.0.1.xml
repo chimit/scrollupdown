@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin name="Scroll Up Down" version_long="10001" version_human="1.0.1" author="motomac" website="" update_check=""><hooks><hook type="S" class="\IPS\Theme\class_core_front_global" filename="scroll_sidebar"><![CDATA[//<?php
+
+class hook87 extends _HOOK_CLASS_
+{
+
+/* !Hook Data - DO NOT REMOVE */
+public static function hookData() {
+ return array_merge_recursive( array (
+  'globalTemplate' => 
+  array (
+    0 => 
+    array (
+      'selector' => '#ipsLayout_body',
+      'type' => 'add_inside_end',
+      'content' => '<div class="scroll_sidebar ipsResponsive_showDesktop" data-controller="plugins.scrollUpDown"></div>',
+    ),
+  ),
+), parent::hookData() );
+}
+/* End Hook Data */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}]]></hook></hooks><tasks/><htmlFiles/><cssFiles><css filename="scrollup_styles.css">LnNjcm9sbF9zaWRlYmFyIHsKCXBvc2l0aW9uOiBmaXhlZDsKCXotaW5kZXg6IDIwMDA7Cgl0b3A6IDA7CglsZWZ0OiAwOwoJaGVpZ2h0OiAxMDAlOwoJYmFja2dyb3VuZDogYmxhY2s7CglvcGFjaXR5OiAwOwoJY29sb3I6IHdoaXRlOwoJdGV4dC1hbGlnbjogY2VudGVyOwoJcGFkZGluZzogNXB4Owp9Cg==</css></cssFiles><jsFiles><js filename="main.js">OyggZnVuY3Rpb24oJCwgXywgdW5kZWZpbmVkKXsKICAidXNlIHN0cmljdCI7CgogIGlwcy5jb250cm9sbGVyLnJlZ2lzdGVyKCdwbHVnaW5zLnNjcm9sbFVwRG93bicsIHsKCiAgICBpbml0aWFsaXplOiBmdW5jdGlvbiAoKSB7CgkJCXZhciBsYXN0UG9zaXRpb247CgkJCXZhciBzY3JvbGxTaWRlYmFyV2lkdGggPSAoJChkb2N1bWVudCkud2lkdGgoKSAtICQoJyNpcHNMYXlvdXRfYm9keScpLndpZHRoKCkpLzI7CgoJCQlpZiAoc2Nyb2xsU2lkZWJhcldpZHRoID4gMTAwKSB7CgkJCQlzY3JvbGxTaWRlYmFyV2lkdGggPSAxMDA7CgkJCX0KCgkJCSQoJy5zY3JvbGxfc2lkZWJhcicpLmNzcygnd2lkdGgnLCBzY3JvbGxTaWRlYmFyV2lkdGgpOwoJCQkkKCcuc2Nyb2xsX3NpZGViYXInKS5jc3MoJ2ZvbnQtc2l6ZScsIHNjcm9sbFNpZGViYXJXaWR0aCArICdweCcpOwoKCQkJdGhpcy5vbiggZG9jdW1lbnQsICdtb3VzZW92ZXInLCAnLnNjcm9sbF9zaWRlYmFyJywgdGhpcy5zaG93U2Nyb2xsU2lkZWJhciApOwoJCQl0aGlzLm9uKCBkb2N1bWVudCwgJ21vdXNlbGVhdmUnLCAnLnNjcm9sbF9zaWRlYmFyJywgdGhpcy5oaWRlU2Nyb2xsU2lkZWJhciApOwogICAgICB0aGlzLm9uKCBkb2N1bWVudCwgJ2NsaWNrJywgJy5zY3JvbGxfc2lkZWJhcicsIHRoaXMuc2Nyb2xsVXBEb3duICk7CiAgICB9LAoKCQlzaG93U2Nyb2xsU2lkZWJhcjogZnVuY3Rpb24gKCkgewoJCQlpZiAoJCh3aW5kb3cpLnNjcm9sbFRvcCgpID4gMzUwKSB7CgkJCQl0aGlzLnNjb3BlLmh0bWwoJzxpIGNsYXNzPSJmYSBmYS1hbmdsZS11cCI+PC9pPicpOwoJCQkJdGhpcy5zY29wZS5jc3MoJ29wYWNpdHknLCAnMC4xJyk7CgkJCQl0aGlzLnNjb3BlLmNzcygnY3Vyc29yJywgJ3BvaW50ZXInKTsKCQkJfSBlbHNlIGlmICh0aGlzLmxhc3RQb3NpdGlvbikgewoJCQkJdGhpcy5zY29wZS5odG1sKCc8aSBjbGFzcz0iZmEgZmEtYW5nbGUtZG93biI+PC9pPicpOwoJCQkJdGhpcy5zY29wZS5jc3MoJ29wYWNpdHknLCAnMC4xJyk7CgkJCQl0aGlzLnNjb3BlLmNzcygnY3Vyc29yJywgJ3BvaW50ZXInKTsKCQkJfQoJCX0sCgoJCWhpZGVTY3JvbGxTaWRlYmFyOiBmdW5jdGlvbiAoKSB7CgkJCXRoaXMuc2NvcGUuY3NzKCdvcGFjaXR5JywgJzAnKTsKCQl9LAoKICAgIHNjcm9sbFVwRG93bjogZnVuY3Rpb24gKCkgewoJCQl2YXIgc2VsZiA9IHRoaXM7CgoJCQlpZiAoJCh3aW5kb3cpLnNjcm9sbFRvcCgpID4gMzUwKSB7CgkJCQl0aGlzLmxhc3RQb3NpdGlvbiA9ICQod2luZG93KS5zY3JvbGxUb3AoKTsKCgkJCQkkKCJodG1sLCBib2R5IikuYW5pbWF0ZSh7IHNjcm9sbFRvcDogMCB9LCA2MDAsIGZ1bmN0aW9uICgpIHsKCQkJCQlzZWxmLnNjb3BlLmh0bWwoJzxpIGNsYXNzPSJmYSBmYS1hbmdsZS1kb3duIj48L2k+Jyk7CgkJCQl9KTsKCQkJfSBlbHNlIGlmICh0aGlzLmxhc3RQb3NpdGlvbikgewoJCQkJJCgiaHRtbCwgYm9keSIpLmFuaW1hdGUoeyBzY3JvbGxUb3A6IHRoaXMubGFzdFBvc2l0aW9uIH0sIDYwMCwgZnVuY3Rpb24gKCkgewoJCQkJCXNlbGYuc2NvcGUuaHRtbCgnPGkgY2xhc3M9ImZhIGZhLWFuZ2xlLXVwIj48L2k+Jyk7CgkJCQl9KTsKCQkJfQogICAgfQoKICB9KTsKfShqUXVlcnksIF8pKTsK</js></jsFiles><resourcesFiles/><lang/><versions><version long="10000" human="1.0.0"><![CDATA[//<?php
+
+
+/* To prevent PHP errors (extending class does not exist) revealing path */
+if ( !defined( '\IPS\SUITE_UNIQUE_KEY' ) )
+{
+	header( ( isset( $_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0' ) . ' 403 Forbidden' );
+	exit;
+}
+
+/**
+ * Install Code
+ */
+class ips_plugins_setup_install
+{
+	/**
+	 * ...
+	 *
+	 * @return	array	If returns TRUE, upgrader will proceed to next step. If it returns any other value, it will set this as the value of the 'extra' GET parameter and rerun this step (useful for loops)
+	 */
+	public function step1()
+	{
+		
+
+		return TRUE;
+	}
+	
+	// You can create as many additional methods (step2, step3, etc.) as is necessary.
+	// Each step will be executed in a new HTTP request
+}]]></version><version long="10001" human="1.0.1"><![CDATA[//<?php
+
+
+/* To prevent PHP errors (extending class does not exist) revealing path */
+if ( !defined( '\IPS\SUITE_UNIQUE_KEY' ) )
+{
+	header( ( isset( $_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0' ) . ' 403 Forbidden' );
+	exit;
+}
+
+/**
+ * 1.0.1 Upgrade Code
+ */
+class ips_plugins_setup_upg_10001
+{
+	/**
+	 * ...
+	 *
+	 * @return	array	If returns TRUE, upgrader will proceed to next step. If it returns any other value, it will set this as the value of the 'extra' GET parameter and rerun this step (useful for loops)
+	 */
+	public function step1()
+	{
+		
+
+		return TRUE;
+	}
+	
+	// You can create as many additional methods (step2, step3, etc.) as is necessary.
+	// Each step will be executed in a new HTTP request
+}]]></version></versions></plugin>

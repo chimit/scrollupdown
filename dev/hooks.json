@@ -1,0 +1,6 @@
+{
+    "scroll_sidebar": {
+        "type": "S",
+        "class": "\\IPS\\Theme\\class_core_front_global"
+    }
+}
